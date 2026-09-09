@@ -1,22 +1,13 @@
-/* =============================
-   GENERAL
-   ============================= */
-
 :root {
-    color-scheme: dark;
-
-    --page-background: #0f172a;
+    --background: #0f172a;
     --surface: #1e293b;
-    --surface-raised: #273449;
-    --border: #334155;
-
-    --text-primary: #e2e8f0;
-    --text-secondary: #94a3b8;
-
-    --accent: #60a5fa;
-    --accent-hover: #3b82f6;
-
+    --surface-light: #334155;
+    --border: #475569;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;
     --danger: #ef4444;
+    --success: #22c55e;
 }
 
 
@@ -27,12 +18,12 @@
 
 body {
     margin: 0;
+    min-height: 100vh;
 
     font-family: Arial, sans-serif;
 
-    background-color: var(--page-background);
-
-    color: var(--text-primary);
+    background: var(--background);
+    color: var(--text);
 }
 
 
@@ -42,28 +33,26 @@ body {
 
 header {
     display: flex;
-
     justify-content: space-between;
+    align-items: flex-start;
 
-    align-items: center;
-
-    padding: 20px 40px;
-
-    background-color: var(--surface);
+    padding: 24px 40px;
 
     border-bottom: 1px solid var(--border);
+
+    background: var(--surface);
 }
 
 
 .header-title h1 {
-    margin: 0;
+    margin: 0 0 5px;
+    font-size: 28px;
 }
 
 
 .header-title p {
-    margin: 5px 0 0;
-
-    color: var(--text-secondary);
+    margin: 0;
+    color: var(--text-muted);
 }
 
 
@@ -79,121 +68,85 @@ header {
 #new-task-button {
     padding: 11px 18px;
 
-    border: 0;
-
+    border: none;
     border-radius: 8px;
 
-    background-color: var(--accent-hover);
+    background: var(--accent);
+    color: #0f172a;
 
-    color: white;
-
-    font-weight: 700;
-
+    font-weight: bold;
     cursor: pointer;
 }
 
 
-#new-task-button:hover,
-#new-task-button:focus-visible {
-    background-color: #2563eb;
+#new-task-button:hover {
+    opacity: 0.9;
 }
 
 
 /* =============================
-   TASK FORM POPOVER
+   NEW TASK POPOVER
    ============================= */
 
 .task-form-popover {
     position: absolute;
 
-    z-index: 10;
-
     top: calc(100% + 12px);
-
     right: 0;
 
-    width: min(420px, calc(100vw - 32px));
+    width: 400px;
 
     padding: 22px;
 
+    background: var(--surface);
+
     border: 1px solid var(--border);
+    border-radius: 12px;
 
-    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 
-    background-color: var(--surface);
+    display: none;
 
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
-
-    visibility: hidden;
-
-    opacity: 0;
-
-    transform: translateY(-8px);
-
-    pointer-events: none;
-
-    transition:
-        opacity 160ms ease,
-        transform 160ms ease,
-        visibility 160ms ease;
+    z-index: 10;
 }
 
 
 .task-form-popover.is-open {
-    visibility: visible;
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-    pointer-events: auto;
+    display: block;
 }
 
 
 .task-form-heading {
     display: flex;
-
-    align-items: flex-start;
-
     justify-content: space-between;
-
-    gap: 16px;
+    align-items: flex-start;
 
     margin-bottom: 20px;
 }
 
 
-.task-form-heading h2,
-.eyebrow {
+.task-form-heading h2 {
     margin: 0;
 }
 
 
 .eyebrow {
-    margin-bottom: 4px;
+    margin: 0 0 5px;
 
     color: var(--accent);
 
-    font-size: 0.72rem;
-
-    font-weight: 700;
-
-    letter-spacing: 0.08em;
-
+    font-size: 12px;
     text-transform: uppercase;
 }
 
 
 .close-form-button {
-    border: 0;
-
+    border: none;
     background: transparent;
 
-    color: var(--text-secondary);
+    color: var(--text-muted);
 
-    font-size: 1.5rem;
-
-    line-height: 1;
+    font-size: 24px;
 
     cursor: pointer;
 }
@@ -204,34 +157,34 @@ header {
    ============================= */
 
 main {
-    width: 90%;
+    max-width: 1400px;
 
-    max-width: 1100px;
-
-    margin: 30px auto;
+    margin: 0 auto;
+    padding: 32px 40px;
 }
 
 
 /* =============================
-   SUMMARY
+   DASHBOARD
    ============================= */
 
 #task-summary {
-    display: flex;
+    display: grid;
 
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+
+    margin-bottom: 30px;
 }
 
 
 .summary-card {
-    flex: 1;
-
     padding: 20px;
 
-    background-color: var(--surface);
+    background: var(--surface);
 
     border: 1px solid var(--border);
-
     border-radius: 10px;
 }
 
@@ -239,16 +192,101 @@ main {
 .summary-card h2 {
     margin: 0 0 10px;
 
-    color: var(--text-secondary);
-
-    font-size: 1rem;
+    font-size: 15px;
+    color: var(--text-muted);
 }
 
 
 .summary-card span {
-    font-size: 2rem;
+    font-size: 30px;
+    font-weight: bold;
+}
 
-    font-weight: 700;
+
+/* =============================
+   TASKS LAYOUT
+   ============================= */
+
+.tasks-layout {
+    display: grid;
+
+    grid-template-columns: 220px 1fr;
+
+    gap: 24px;
+
+    align-items: start;
+}
+
+
+/* =============================
+   FILTER SIDEBAR
+   ============================= */
+
+#filters-sidebar {
+    position: sticky;
+    top: 20px;
+
+    padding: 20px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+
+.filters-header {
+    margin-bottom: 22px;
+}
+
+
+.filters-header h2 {
+    margin: 0;
+
+    font-size: 18px;
+}
+
+
+/* =============================
+   FILTER GROUP
+   ============================= */
+
+.filter-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+}
+
+
+.filter-group label {
+    font-size: 14px;
+
+    color: var(--text-muted);
+}
+
+
+.filter-group select {
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background: var(--background);
+    color: var(--text);
+
+    cursor: pointer;
+}
+
+
+.filter-group select:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
 }
 
 
@@ -257,12 +295,12 @@ main {
    ============================= */
 
 #tasks-section {
-    margin-top: 30px;
+    min-width: 0;
 }
 
 
 .section-header {
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 
@@ -280,7 +318,7 @@ main {
 
     flex-direction: column;
 
-    gap: 15px;
+    gap: 14px;
 }
 
 
@@ -292,17 +330,15 @@ main {
     display: flex;
 
     justify-content: space-between;
-
     align-items: center;
 
     gap: 20px;
 
-    padding: 20px;
+    padding: 18px;
 
-    background-color: var(--surface);
+    background: var(--surface);
 
     border: 1px solid var(--border);
-
     border-radius: 10px;
 }
 
@@ -312,7 +348,7 @@ main {
 
     align-items: flex-start;
 
-    gap: 15px;
+    gap: 14px;
 
     min-width: 0;
 }
@@ -320,12 +356,9 @@ main {
 
 .task-checkbox {
     width: 18px;
-
     height: 18px;
 
     margin-top: 3px;
-
-    flex-shrink: 0;
 
     cursor: pointer;
 }
@@ -337,25 +370,27 @@ main {
 
 
 .task-content h3 {
-    margin: 0;
+    margin: 0 0 7px;
 
-    font-size: 1.05rem;
+    font-size: 17px;
 }
 
 
 .task-content p {
-    margin: 8px 0;
+    margin: 0 0 8px;
 
-    color: var(--text-secondary);
+    color: var(--text-muted);
 
-    line-height: 1.5;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
 }
 
 
 .task-deadline {
-    color: var(--text-secondary);
+    font-size: 13px;
 
-    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 
@@ -363,18 +398,20 @@ main {
    COMPLETED TASK
    ============================= */
 
-.task-card.completed {
-    opacity: 0.65;
+.task-card.completed .task-content h3 {
+    text-decoration: line-through;
+
+    color: var(--text-muted);
 }
 
 
-.task-card.completed .task-content h3 {
-    text-decoration: line-through;
+.task-card.completed .task-content p {
+    opacity: 0.6;
 }
 
 
 /* =============================
-   TASK INFO
+   TASK INFORMATION
    ============================= */
 
 .task-info {
@@ -382,62 +419,52 @@ main {
 
     align-items: center;
 
-    gap: 15px;
+    gap: 12px;
 
     flex-shrink: 0;
 }
 
-
-/* =============================
-   PRIORITY
-   ============================= */
 
 .task-priority {
     padding: 5px 9px;
 
     border-radius: 6px;
 
-    font-size: 0.8rem;
-
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 
 .task-priority.low {
-    background-color: #166534;
+    background: rgba(34, 197, 94, 0.15);
 
-    color: #bbf7d0;
+    color: var(--success);
 }
 
 
 .task-priority.medium {
-    background-color: #854d0e;
+    background: rgba(234, 179, 8, 0.15);
 
-    color: #fef08a;
+    color: #eab308;
 }
 
 
 .task-priority.high {
-    background-color: #991b1b;
+    background: rgba(239, 68, 68, 0.15);
 
-    color: #fecaca;
+    color: var(--danger);
 }
 
 
-/* =============================
-   DELETE BUTTON
-   ============================= */
-
 .delete-task {
-    padding: 7px 11px;
+    padding: 7px 10px;
 
     border: 1px solid var(--border);
-
     border-radius: 6px;
 
-    background-color: transparent;
+    background: transparent;
 
-    color: var(--text-secondary);
+    color: var(--text-muted);
 
     cursor: pointer;
 }
@@ -459,64 +486,57 @@ main {
 
     flex-direction: column;
 
-    gap: 5px;
+    gap: 7px;
+
+    margin-bottom: 16px;
 }
 
 
-.form-row {
-    display: flex;
-
-    gap: 20px;
-
-    margin-top: 16px;
+.form-group label {
+    font-size: 14px;
 }
 
 
-.form-row .form-group {
-    flex: 1;
-}
-
-
-input,
-textarea,
-select {
+.form-group input,
+.form-group textarea,
+.form-group select {
     width: 100%;
 
-    padding: 10px 11px;
+    padding: 10px 12px;
 
     border: 1px solid var(--border);
+    border-radius: 7px;
 
-    border-radius: 6px;
+    background: var(--background);
+    color: var(--text);
 
     font: inherit;
-
-    background-color: var(--surface-raised);
-
-    color: var(--text-primary);
 }
 
 
-input:focus,
-textarea:focus,
-select:focus {
-    border-color: var(--accent);
-
-    outline: 2px solid rgba(96, 165, 250, 0.25);
-
-    outline-offset: 1px;
-}
-
-
-textarea {
-    min-height: 84px;
+.form-group textarea {
+    min-height: 100px;
 
     resize: vertical;
 }
 
 
-/* =============================
-   FORM ACTIONS
-   ============================= */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
 
 .form-actions {
     display: flex;
@@ -525,37 +545,28 @@ textarea {
 
     gap: 10px;
 
-    margin-top: 16px;
+    margin-top: 20px;
 }
 
 
 .form-actions button {
-    padding: 9px 13px;
+    padding: 9px 14px;
 
-    border: 0;
+    border: 1px solid var(--border);
+    border-radius: 7px;
 
-    border-radius: 6px;
+    background: var(--surface-light);
+    color: var(--text);
 
     cursor: pointer;
 }
 
 
-#cancel-task-button {
-    background-color: var(--border);
-
-    color: var(--text-primary);
-}
-
-
 #save-task-button {
-    background-color: var(--accent-hover);
+    border-color: var(--accent);
 
-    color: white;
-}
-
-
-#save-task-button:hover {
-    background-color: #2563eb;
+    background: var(--accent);
+    color: var(--background);
 }
 
 
@@ -564,22 +575,26 @@ textarea {
    ============================= */
 
 .empty-state {
-    padding: 40px;
+    padding: 50px 20px;
 
     text-align: center;
 
+    background: var(--surface);
+
     border: 1px dashed var(--border);
-
     border-radius: 10px;
-
-    color: var(--text-secondary);
 }
 
 
 .empty-state h3 {
-    margin-top: 0;
+    margin: 0 0 8px;
+}
 
-    color: var(--text-primary);
+
+.empty-state p {
+    margin: 0;
+
+    color: var(--text-muted);
 }
 
 
@@ -587,19 +602,64 @@ textarea {
    RESPONSIVE
    ============================= */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 
     header {
-        align-items: flex-start;
-
-        gap: 18px;
-
         padding: 20px;
     }
 
 
+    main {
+        padding: 24px 20px;
+    }
+
+
+    .tasks-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    #filters-sidebar {
+        position: static;
+    }
+
+
+    .filter-group {
+        margin-bottom: 14px;
+    }
+
+
     #task-summary {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    header {
         flex-direction: column;
+
+        gap: 18px;
+    }
+
+
+    .task-menu {
+        width: 100%;
+    }
+
+
+    #new-task-button {
+        width: 100%;
+    }
+
+
+    .task-form-popover {
+        left: 0;
+        right: auto;
+
+        width: 100%;
     }
 
 
@@ -616,28 +676,7 @@ textarea {
 
 
     .form-row {
-        flex-direction: column;
-
-        gap: 16px;
-    }
-
-}
-
-
-@media (max-width: 500px) {
-
-    header {
-        flex-direction: column;
-    }
-
-
-    .task-menu {
-        width: 100%;
-    }
-
-
-    #new-task-button {
-        width: 100%;
+        grid-template-columns: 1fr;
     }
 
 }

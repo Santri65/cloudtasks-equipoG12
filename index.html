@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,6 @@
 <body>
 
     <header>
-
         <div class="header-title">
             <h1>CloudTasks</h1>
             <p>Manage your tasks</p>
@@ -35,9 +33,7 @@
                 class="task-form-popover"
                 aria-hidden="true"
             >
-
                 <div class="task-form-heading">
-
                     <div>
                         <p class="eyebrow">Quick action</p>
                         <h2>Create New Task</h2>
@@ -51,86 +47,52 @@
                     >
                         &times;
                     </button>
-
                 </div>
-
 
                 <form id="task-form">
 
                     <div class="form-group">
-
-                        <label for="title">
-                            Title
-                        </label>
-
+                        <label for="title">Title</label>
                         <input
                             type="text"
                             id="title"
                             name="title"
                             required
                         >
-
                     </div>
 
-
                     <div class="form-group">
-
-                        <label for="description">
-                            Description
-                        </label>
-
+                        <label for="description">Description</label>
                         <textarea
                             id="description"
                             name="description"
                         ></textarea>
-
                     </div>
-
 
                     <div class="form-row">
 
                         <div class="form-group">
-
-                            <label for="deadline">
-                                Deadline
-                            </label>
-
+                            <label for="deadline">Deadline</label>
                             <input
                                 type="date"
                                 id="deadline"
                                 name="deadline"
                             >
-
                         </div>
 
-
                         <div class="form-group">
+                            <label for="priority">Priority</label>
 
-                            <label for="priority">
-                                Priority
-                            </label>
-
-                            <select
-                                id="priority"
-                                name="priority"
-                            >
-                                <option value="low">
-                                    Low
-                                </option>
-
+                            <select id="priority" name="priority">
+                                <option value="low">Low</option>
                                 <option value="medium" selected>
                                     Medium
                                 </option>
-
-                                <option value="high">
-                                    High
-                                </option>
+                                <option value="high">High</option>
                             </select>
-
                         </div>
 
                     </div>
-
 
                     <div class="form-actions">
 
@@ -151,67 +113,134 @@
                     </div>
 
                 </form>
-
             </section>
 
         </div>
-
     </header>
 
 
     <main>
 
+        <!-- DASHBOARD -->
         <section id="task-summary">
 
             <div class="summary-card">
-
                 <h2>All</h2>
-
-                <span id="total-tasks">
-                    0
-                </span>
-
+                <span id="total-tasks">0</span>
             </div>
 
-
             <div class="summary-card">
-
                 <h2>Pending</h2>
-
-                <span id="pending-tasks">
-                    0
-                </span>
-
+                <span id="pending-tasks">0</span>
             </div>
-
 
             <div class="summary-card">
-
                 <h2>Completed</h2>
-
-                <span id="completed-tasks">
-                    0
-                </span>
-
+                <span id="completed-tasks">0</span>
             </div>
 
         </section>
 
 
-        <section id="tasks-section">
+        <!-- TASK AREA -->
+        <div class="tasks-layout">
 
-            <div class="section-header">
-                <h2>Tasks</h2>
-            </div>
+            <!-- FILTER SIDEBAR -->
+            <aside id="filters-sidebar">
+
+                <div class="filters-header">
+                    <h2>Filters</h2>
+                </div>
 
 
-            <div id="task-list">
+                <!-- PRIORITY FILTER -->
+                <div class="filter-group">
 
-                <!-- JavaScript will insert tasks here -->
+                    <label for="priority-filter">
+                        Priority
+                    </label>
 
-            </div>
+                    <select id="priority-filter">
 
-        </section>
+                        <option value="all">
+                            All priorities
+                        </option>
+
+                        <option value="low">
+                            Low
+                        </option>
+
+                        <option value="medium">
+                            Medium
+                        </option>
+
+                        <option value="high">
+                            High
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DATE FILTER -->
+                <div class="filter-group">
+
+                    <label for="date-filter">
+                        Date
+                    </label>
+
+                    <select id="date-filter">
+
+                        <option value="all">
+                            All dates
+                        </option>
+
+                        <option value="today">
+                            Today
+                        </option>
+
+                        <option value="week">
+                            This week
+                        </option>
+
+                        <option value="month">
+                            This month
+                        </option>
+
+                        <option value="upcoming">
+                            Upcoming
+                        </option>
+
+                        <option value="overdue">
+                            Overdue
+                        </option>
+
+                        <option value="no-deadline">
+                            No deadline
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </aside>
+
+
+            <!-- TASKS -->
+            <section id="tasks-section">
+
+                <div class="section-header">
+                    <h2>Tasks</h2>
+                </div>
+
+                <div id="task-list">
+                    <!-- JavaScript will insert tasks here -->
+                </div>
+
+            </section>
+
+        </div>
 
     </main>
 
@@ -219,5 +248,4 @@
     <script src="js/app.js"></script>
 
 </body>
-
 </html>
