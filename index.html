@@ -12,9 +12,70 @@
             <p>Manage your tasks</p>
         </div>
 
-        <button id="new-task-button">
-            + New Task
-        </button>
+        <div class="task-menu">
+            <button
+                id="new-task-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="task-form-section"
+            >
+                + New Task
+            </button>
+
+            <section
+                id="task-form-section"
+                class="task-form-popover"
+                aria-hidden="true"
+            >
+                <div class="task-form-heading">
+                    <div>
+                        <p class="eyebrow">Quick action</p>
+                        <h2>Create New Task</h2>
+                    </div>
+                    <button
+                        type="button"
+                        class="close-form-button"
+                        id="close-task-button"
+                        aria-label="Close new task form"
+                    >
+                        &times;
+                    </button>
+                </div>
+
+                <form id="task-form">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="deadline">Deadline</label>
+                            <input type="date" id="deadline" name="deadline">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="priority">Priority</label>
+                            <select id="priority" name="priority">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="cancel-task-button">Cancel</button>
+                        <button type="submit" id="save-task-button">Create Task</button>
+                    </div>
+                </form>
+            </section>
+        </div>
     </header>
 
      <main>
@@ -50,83 +111,6 @@
                 <!-- Tasks will be inserted here -->
 
             </div>
-
-        </section>
-
-
-        <section id="task-form-section">
-
-            <h2>Create New Task</h2>
-
-            <form id="task-form">
-
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input
-                        type="text"
-                        id="title"
-                        name="title"
-                        required
-                    >
-                </div>
-
-
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea
-                        id="description"
-                        name="description"
-                    ></textarea>
-                </div>
-
-
-                <div class="form-row">
-
-                    <div class="form-group">
-                        <label for="deadline">Deadline</label>
-                        <input
-                            type="date"
-                            id="deadline"
-                            name="deadline"
-                        >
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="priority">Priority</label>
-
-                        <select
-                            id="priority"
-                            name="priority"
-                        >
-                            <option value="low">Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
-                        </select>
-                    </div>
-
-                </div>
-
-
-                <div class="form-actions">
-
-                    <button
-                        type="button"
-                        id="cancel-task-button"
-                    >
-                        Cancel
-                    </button>
-
-                    <button
-                        type="submit"
-                        id="save-task-button"
-                    >
-                        Create Task
-                    </button>
-
-                </div>
-
-            </form>
 
         </section>
 
