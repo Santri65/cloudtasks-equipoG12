@@ -13,8 +13,12 @@
 
     <header>
         <div class="header-title">
-            <h1>CloudTasks</h1>
-            <p>Manage your tasks</p>
+            <div class="brand">
+                <span class="brand-icon">☁</span>
+                <h1>CloudTasks</h1>
+            </div>
+
+            <p>Manage your tasks and unfinished business</p>
         </div>
 
         <div class="task-menu">
@@ -125,18 +129,29 @@
         <section id="task-summary">
 
             <div class="summary-card">
-                <h2>All</h2>
-                <span id="total-tasks">0</span>
-            </div>
+                <div class="summary-icon">☰</div>
+
+                <div class="summary-content">
+                    <h2>All</h2>
+                    <span id="total-tasks">0</span>
+                </div>
 
             <div class="summary-card">
-                <h2>Pending</h2>
-                <span id="pending-tasks">0</span>
-            </div>
+                    <div class="summary-icon">◷</div>
+
+                    <div class="summary-content">
+                        <h2>Pending</h2>
+                        <span id="pending-tasks">0</span>
+                    </div>
+                </div>
 
             <div class="summary-card">
-                <h2>Completed</h2>
-                <span id="completed-tasks">0</span>
+                 <div class="summary-icon">✓</div>
+
+                <div class="summary-content">
+                    <h2>Completed</h2>
+                    <span id="completed-tasks">0</span>
+                </div>
             </div>
 
         </section>

@@ -44,15 +44,48 @@ header {
 }
 
 
-.header-title h1 {
-    margin: 0 0 5px;
-    font-size: 28px;
+.header-title {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 10px;
+
+    background: var(--accent);
+
+    color: var(--background);
+
+    font-size: 25px;
+}
+.header-title h1 {
+    margin: 0;
+
+    font-size: 32px;
+    letter-spacing: -1px;
+}
 .header-title p {
     margin: 0;
+
     color: var(--text-muted);
+
+    font-size: 14px;
 }
 
 
@@ -157,6 +190,7 @@ header {
    ============================= */
 
 main {
+    width: 100%;
     max-width: 1400px;
 
     margin: 0 auto;
@@ -173,6 +207,8 @@ main {
 
     grid-template-columns: repeat(3, 1fr);
 
+    width: 100%;
+
     gap: 16px;
 
     margin-bottom: 30px;
@@ -180,26 +216,76 @@ main {
 
 
 .summary-card {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
     padding: 20px;
 
     background: var(--surface);
 
     border: 1px solid var(--border);
+    border-radius: 12px;
+
+    transition: transform 0.2s ease,
+                border-color 0.2s ease;
+}
+
+
+.summary-card:hover {
+    transform: translateY(-2px);
+
+    border-color: var(--accent);
+}
+
+
+.summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
     border-radius: 10px;
+
+    background: var(--surface-light);
+
+    color: var(--accent);
+
+    font-size: 23px;
+}
+
+
+.summary-content {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
 }
 
 
 .summary-card h2 {
-    margin: 0 0 10px;
+    margin: 0;
 
-    font-size: 15px;
+    font-size: 14px;
+
     color: var(--text-muted);
+
+    font-weight: normal;
 }
 
 
 .summary-card span {
-    font-size: 30px;
+    font-size: 28px;
+
     font-weight: bold;
+
+    line-height: 1;
 }
 
 
