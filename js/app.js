@@ -497,7 +497,6 @@ function getFilteredTasks() {
             matchesDate = false;
         }
 
-
         return (
             matchesPriority
             &&
